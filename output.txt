@@ -1,0 +1,29 @@
+graph built using constructor.
+graph size: 5
+inserting edge: 0 to 3
+inserting edge: 0 to 2
+inserting edge: 1 to 3
+inserting edge: 2 to 3
+inserting edge: 3 to 4
+inserting edge: 4 to 0
+vertex vector: 1 1 1 1 1 
+
+edge count: 6
+random vector: 0
+pred: 0 1 2 3 4 
+
+desc: 0 2 3 4 
+
+Ans: 0 2 3 4 
+vertex vector: 0 1 0 0 0 
+
+edge count: 0
+Ans: 1 
+vertex vector: 0 0 0 0 0 
+
+edge count: 0
+Ans: 
+vertex vector: 0 0 0 0 0 
+
+edge count: 0
+Ans: 
