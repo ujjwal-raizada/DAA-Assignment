@@ -91,23 +91,29 @@ public:
 	}
 
 	vector<ll> pred(vector<ll> vertex_set, ll v) {
-		vector<ll> result;
+		vector<ll> result(no_of_vertices, 0);
 		vector<ll> vis(no_of_vertices, 0);
-		result.pb(v);
+		result[v] = 1;
 		vis[v] = 1;
 		get_pred(v, vertex_set, result, vis);
-		sort(result.begin(), result.end());
-		return result;
+		std::vector<ll> result_set;
+		for (ll i = 0; i < no_of_vertices; i++)
+			if (result[i] == 1)
+				result_set.pb(i);
+		return result_set;
 	}
 
 	vector<ll> desc(vector<ll> vertex_set, ll v) {
-		vector<ll> result;
+		vector<ll> result(no_of_vertices, 0);
 		vector<ll> vis(no_of_vertices, 0);
-		result.pb(v);
+		result[v] = 1;
 		vis[v] = 1;
 		get_descendent(v, vertex_set, result, vis);
-		sort(result.begin(), result.end());
-		return result;
+		std::vector<ll> result_set;
+		for (ll i = 0; i < no_of_vertices; i++)
+			if (result[i] == 1)
+				result_set.pb(i);
+		return result_set;
 	}
 
 	vector<ll> get_vector_set(vector<ll> vertex_set) {
@@ -124,7 +130,7 @@ private:
 		for (ll i = 0; i < graph[v].size(); i++) {
 			ll y = graph[v][i];
 			if (vertex_set[y] == 1 and vis[y] == 0) {
-				result.pb(y);
+				result[y] = 1;
 				vis[y] = 1;
 				get_descendent(y, vertex_set, result, vis);
 			}
@@ -135,7 +141,7 @@ private:
 		for (ll i = 0; i < graph_inverted[v].size(); i++) {
 			ll y = graph_inverted[v][i];
 			if (vertex_set[y] == 1 and vis[y] == 0) {
-				result.pb(y);
+				result[y] = 1;
 				vis[y] = 1;
 				get_pred(y, vertex_set, result, vis);
 			}
