@@ -3,6 +3,8 @@
 #define pb push_back
 
 using namespace std;
+ll medge = 0;
+ll mnodes = 1;
 
 class Set {
 public:
@@ -170,9 +172,9 @@ void dcsc(Graph graph, vector<ll> vertex_vector) {
 	if (graph.edge_count(vertex_set) == 0) {
 		
 		// cout << "Ans: ";
-		for (ll i = 0; i < vertex_set.size(); i++)
-			if (vertex_set[i] == 1)
-				cout << i << endl;
+		// for (ll i = 0; i < vertex_set.size(); i++)
+		// 	if (vertex_set[i] == 1)
+		// 		cout << i << endl;
 	}
 	else {
 		ll v = graph.random_vertex(vertex_set);
@@ -187,7 +189,14 @@ void dcsc(Graph graph, vector<ll> vertex_vector) {
 
 		vector<ll> scc = Set::get_intersection(graph.pred(vertex_set, v), graph.desc(vertex_set, v));
 		// cout << "Ans: ";
-		print_vector(scc);
+		// print_vector(scc);
+
+		std::vector<ll> temp_vertex_set(graph.no_of_vertices, 0);
+		for (ll i = 0; i < scc.size(); i++)
+			temp_vertex_set[scc[i]] = 1;
+		medge = max(medge, graph.edge_count(temp_vertex_set));
+		mnodes = max(mnodes, (ll)scc.size());
+
 		dcsc(graph, Set::get_subtract(graph.pred(vertex_set, v), scc));
 		dcsc(graph, Set::get_subtract(graph.desc(vertex_set, v), scc));
 		vector<ll> rem = Set::get_subtract(graph.get_vector_set(vertex_set), Set::get_union(graph.pred(vertex_set, v), graph.desc(vertex_set, v)));
@@ -201,7 +210,7 @@ int main() {
     //Using text files for input output
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    // freopen("output.txt", "w", stdout);
     #endif
 
     ll n, m;
@@ -218,5 +227,7 @@ int main() {
     }
 
     dcsc(graph, vertex_set);
+    cout << "medge: " << medge << endl;
+    cout << "mnodes: " << mnodes << endl;
     return 0;
 }
