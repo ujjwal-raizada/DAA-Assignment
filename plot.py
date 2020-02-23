@@ -14,7 +14,7 @@ def draw_graph():
 
         with open(os.path.join('./test/input', in_file), 'r') as f:
             n_node, n_edge = map_int(f.readline())
-            node_list = [i for i in range(1, n_node+1)]
+            node_list = [i for i in range(n_node)]
             graph.add_nodes_from(node_list)
 
             edge_list = [map_int(f.readline()) for i in range(n_edge)]
