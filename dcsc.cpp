@@ -48,7 +48,7 @@ public:
 	vector<vector<ll>> graph_inverted;
 
 	Graph(ll no_vertices, ll no_edges) {
-		cout << "graph built using constructor.\n";
+		// cout << "graph built using constructor.\n";
 		no_of_vertices = no_vertices;
 		no_of_edges = no_edges;
 
@@ -56,11 +56,11 @@ public:
 			graph.pb(vector<ll>(0));
 			graph_inverted.pb(vector<ll>(0));
 		}
-		cout << "graph size: " << graph.size() << endl;
+		// cout << "graph size: " << graph.size() << endl;
 	}
 
 	void insert_edge(ll from, ll to) {
-		cout << "inserting edge: " << from << " to " << to << endl; 
+		// cout << "inserting edge: " << from << " to " << to << endl; 
 		graph[from].pb(to);
 		graph_inverted[to].pb(from);
 	}
@@ -162,29 +162,31 @@ void dcsc(Graph graph, vector<ll> vertex_vector) {
 	for (ll i = 0; i < vertex_vector.size(); i++)
 		vertex_set[vertex_vector[i]] = 1;
 
-	cout << "vertex vector: ";
-	print_vector(vertex_set);
-	cout << endl;
+	// cout << "vertex vector: ";
+	// print_vector(vertex_set);
+	// cout << endl;
 
-	cout << "edge count: " << graph.edge_count(vertex_set) << endl;
+	// cout << "edge count: " << graph.edge_count(vertex_set) << endl;
 	if (graph.edge_count(vertex_set) == 0) {
 		
-		cout << "Ans: ";
-		graph.print_vertices(vertex_set);
+		// cout << "Ans: ";
+		for (ll i = 0; i < vertex_set.size(); i++)
+			if (vertex_set[i] == 1)
+				cout << i << endl;
 	}
 	else {
 		ll v = graph.random_vertex(vertex_set);
-		cout << "random vector: " << v << endl;
-		cout << "pred: ";
-		print_vector(graph.pred(vertex_set, v));
-		cout << endl;
+		// cout << "random vector: " << v << endl;
+		// cout << "pred: ";
+		// print_vector(graph.pred(vertex_set, v));
+		// cout << endl;
 
-		cout << "desc: ";
-		print_vector(graph.desc(vertex_set, v));
-		cout << endl;
+		// cout << "desc: ";
+		// print_vector(graph.desc(vertex_set, v));
+		// cout << endl;
 
 		vector<ll> scc = Set::get_intersection(graph.pred(vertex_set, v), graph.desc(vertex_set, v));
-		cout << "Ans: ";
+		// cout << "Ans: ";
 		print_vector(scc);
 		dcsc(graph, Set::get_subtract(graph.pred(vertex_set, v), scc));
 		dcsc(graph, Set::get_subtract(graph.desc(vertex_set, v), scc));
