@@ -5,7 +5,7 @@ Strongly Connected Components using Divide and Conquer
 
 To draw graphs, run the following commands:
 ```
-    sudo apt install  install python3-dev graphviz libgraphviz-dev pkg-config
+    sudo apt install python3-dev graphviz libgraphviz-dev pkg-config
     pipenv install
 ```
 
