@@ -1,0 +1,223 @@
+\hypertarget{classGraph}{}\section{Graph Class Reference}
+\label{classGraph}\index{Graph@{Graph}}
+
+
+Contains operations related to Graphs.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGraph_ac4a367e9d88770686d6d68b386542418}{Graph} (ll no\+\_\+vertices, ll no\+\_\+edges)
+\begin{DoxyCompactList}\small\item\em Constructor for initializing the graphs. \end{DoxyCompactList}\item 
+void \hyperlink{classGraph_af8290de63bf9336aea89bf7bca9e054b}{insert\+\_\+edge} (ll from, ll to)
+\begin{DoxyCompactList}\small\item\em Member function for inserting edges between two vertices into the graph. \end{DoxyCompactList}\item 
+void \hyperlink{classGraph_a2499f1d9980b0f630896d73e714e6603}{print\+\_\+vertices} (vector$<$ ll $>$ vertex\+\_\+set)
+\begin{DoxyCompactList}\small\item\em Member function to print vertices present in the graph. \end{DoxyCompactList}\item 
+ll \hyperlink{classGraph_ad0fce42e87adc80b81a11baa1331edb9}{random\+\_\+vertex} (vector$<$ ll $>$ vertex\+\_\+set)
+\begin{DoxyCompactList}\small\item\em Member function to find a random vertex in the graph. \end{DoxyCompactList}\item 
+ll \hyperlink{classGraph_ac63411364245eb9ae4009429a38621f7}{edge\+\_\+count} (vector$<$ ll $>$ vertex\+\_\+set)
+\begin{DoxyCompactList}\small\item\em Member function which returns total number of edges present in graph. \end{DoxyCompactList}\item 
+vector$<$ ll $>$ \hyperlink{classGraph_aa9bb861babacf50c211afc72b5f424fb}{pred} (vector$<$ ll $>$ vertex\+\_\+set, ll v)
+\begin{DoxyCompactList}\small\item\em Member function to find predecessor vertices of a vertex v in a \hyperlink{classGraph}{Graph}. \end{DoxyCompactList}\item 
+vector$<$ ll $>$ \hyperlink{classGraph_a322040982fd02ab16e2a70b0f9c6758a}{desc} (vector$<$ ll $>$ vertex\+\_\+set, ll v)
+\begin{DoxyCompactList}\small\item\em Member function to find descendant vertices of a vertex v in a \hyperlink{classGraph}{Graph}. \end{DoxyCompactList}\item 
+vector$<$ ll $>$ \hyperlink{classGraph_ab374b601113c5afe1d6d81c72ccb1fa4}{get\+\_\+vector\+\_\+set} (vector$<$ ll $>$ vertex\+\_\+set)
+\begin{DoxyCompactList}\small\item\em Member function which returns vertices corresponding to a given vertex\+\_\+set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ll \hyperlink{classGraph_a9b23a1ce91eceed3856b453858e61a05}{no\+\_\+of\+\_\+vertices}
+\item 
+ll \hyperlink{classGraph_a49735f451a8a2cd7ae8334df2adb42cf}{no\+\_\+of\+\_\+edges}
+\item 
+vector$<$ vector$<$ ll $>$ $>$ \hyperlink{classGraph_ab8435b2eb808e20c78688da1818a3a8a}{graph}
+\item 
+vector$<$ vector$<$ ll $>$ $>$ \hyperlink{classGraph_ab0d5142a7def6b33069b6dbaba9fdf1c}{graph\+\_\+inverted}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains operations related to Graphs. 
+
+Consists of class functions and helper methods for implementing D\+C\+SC algorithm 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGraph_ac4a367e9d88770686d6d68b386542418}\label{classGraph_ac4a367e9d88770686d6d68b386542418}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{ll}]{no\+\_\+vertices,  }\item[{ll}]{no\+\_\+edges }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for initializing the graphs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em no\+\_\+vertices} & The total number of vertices present in the graph \\
+\hline
+{\em no\+\_\+edged} & The total number of edges present in the graph \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classGraph_a322040982fd02ab16e2a70b0f9c6758a}\label{classGraph_a322040982fd02ab16e2a70b0f9c6758a}} 
+\index{Graph@{Graph}!desc@{desc}}
+\index{desc@{desc}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{desc()}{desc()}}
+{\footnotesize\ttfamily vector$<$ll$>$ Graph\+::desc (\begin{DoxyParamCaption}\item[{vector$<$ ll $>$}]{vertex\+\_\+set,  }\item[{ll}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function to find descendant vertices of a vertex v in a \hyperlink{classGraph}{Graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+\_\+set} & A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise \\
+\hline
+{\em v} & Vertex v whose descendants have to be calculated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector consisting of vertices which are descendants of vertex v 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_ac63411364245eb9ae4009429a38621f7}\label{classGraph_ac63411364245eb9ae4009429a38621f7}} 
+\index{Graph@{Graph}!edge\+\_\+count@{edge\+\_\+count}}
+\index{edge\+\_\+count@{edge\+\_\+count}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{edge\+\_\+count()}{edge\_count()}}
+{\footnotesize\ttfamily ll Graph\+::edge\+\_\+count (\begin{DoxyParamCaption}\item[{vector$<$ ll $>$}]{vertex\+\_\+set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function which returns total number of edges present in graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+\_\+set} & A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of edges 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_ab374b601113c5afe1d6d81c72ccb1fa4}\label{classGraph_ab374b601113c5afe1d6d81c72ccb1fa4}} 
+\index{Graph@{Graph}!get\+\_\+vector\+\_\+set@{get\+\_\+vector\+\_\+set}}
+\index{get\+\_\+vector\+\_\+set@{get\+\_\+vector\+\_\+set}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+\_\+vector\+\_\+set()}{get\_vector\_set()}}
+{\footnotesize\ttfamily vector$<$ll$>$ Graph\+::get\+\_\+vector\+\_\+set (\begin{DoxyParamCaption}\item[{vector$<$ ll $>$}]{vertex\+\_\+set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function which returns vertices corresponding to a given vertex\+\_\+set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+\_\+set} & A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classSet}{Set} of vertices represented by the vertex\+\_\+set 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_af8290de63bf9336aea89bf7bca9e054b}\label{classGraph_af8290de63bf9336aea89bf7bca9e054b}} 
+\index{Graph@{Graph}!insert\+\_\+edge@{insert\+\_\+edge}}
+\index{insert\+\_\+edge@{insert\+\_\+edge}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{insert\+\_\+edge()}{insert\_edge()}}
+{\footnotesize\ttfamily void Graph\+::insert\+\_\+edge (\begin{DoxyParamCaption}\item[{ll}]{from,  }\item[{ll}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function for inserting edges between two vertices into the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & Vertex 1 \\
+\hline
+{\em to} & Vertex 2 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_aa9bb861babacf50c211afc72b5f424fb}\label{classGraph_aa9bb861babacf50c211afc72b5f424fb}} 
+\index{Graph@{Graph}!pred@{pred}}
+\index{pred@{pred}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{pred()}{pred()}}
+{\footnotesize\ttfamily vector$<$ll$>$ Graph\+::pred (\begin{DoxyParamCaption}\item[{vector$<$ ll $>$}]{vertex\+\_\+set,  }\item[{ll}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function to find predecessor vertices of a vertex v in a \hyperlink{classGraph}{Graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+\_\+set} & A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise \\
+\hline
+{\em v} & Vertex v whose predecessors have to be calculated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector consisting of vertices which are predecessors of vertex v 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a2499f1d9980b0f630896d73e714e6603}\label{classGraph_a2499f1d9980b0f630896d73e714e6603}} 
+\index{Graph@{Graph}!print\+\_\+vertices@{print\+\_\+vertices}}
+\index{print\+\_\+vertices@{print\+\_\+vertices}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{print\+\_\+vertices()}{print\_vertices()}}
+{\footnotesize\ttfamily void Graph\+::print\+\_\+vertices (\begin{DoxyParamCaption}\item[{vector$<$ ll $>$}]{vertex\+\_\+set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function to print vertices present in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+\_\+set} & A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_ad0fce42e87adc80b81a11baa1331edb9}\label{classGraph_ad0fce42e87adc80b81a11baa1331edb9}} 
+\index{Graph@{Graph}!random\+\_\+vertex@{random\+\_\+vertex}}
+\index{random\+\_\+vertex@{random\+\_\+vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{random\+\_\+vertex()}{random\_vertex()}}
+{\footnotesize\ttfamily ll Graph\+::random\+\_\+vertex (\begin{DoxyParamCaption}\item[{vector$<$ ll $>$}]{vertex\+\_\+set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function to find a random vertex in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+\_\+set} & A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Random vertex v 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classGraph_ab8435b2eb808e20c78688da1818a3a8a}\label{classGraph_ab8435b2eb808e20c78688da1818a3a8a}} 
+\index{Graph@{Graph}!graph@{graph}}
+\index{graph@{graph}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{graph}{graph}}
+{\footnotesize\ttfamily vector$<$vector$<$ll$>$ $>$ Graph\+::graph}
+
+\hyperlink{classGraph}{Graph} stored in form of adjacency list \mbox{\Hypertarget{classGraph_ab0d5142a7def6b33069b6dbaba9fdf1c}\label{classGraph_ab0d5142a7def6b33069b6dbaba9fdf1c}} 
+\index{Graph@{Graph}!graph\+\_\+inverted@{graph\+\_\+inverted}}
+\index{graph\+\_\+inverted@{graph\+\_\+inverted}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{graph\+\_\+inverted}{graph\_inverted}}
+{\footnotesize\ttfamily vector$<$vector$<$ll$>$ $>$ Graph\+::graph\+\_\+inverted}
+
+\hyperlink{classGraph}{Graph} stored in an inverted fashion \mbox{\Hypertarget{classGraph_a49735f451a8a2cd7ae8334df2adb42cf}\label{classGraph_a49735f451a8a2cd7ae8334df2adb42cf}} 
+\index{Graph@{Graph}!no\+\_\+of\+\_\+edges@{no\+\_\+of\+\_\+edges}}
+\index{no\+\_\+of\+\_\+edges@{no\+\_\+of\+\_\+edges}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{no\+\_\+of\+\_\+edges}{no\_of\_edges}}
+{\footnotesize\ttfamily ll Graph\+::no\+\_\+of\+\_\+edges}
+
+Number of edges present in graph \mbox{\Hypertarget{classGraph_a9b23a1ce91eceed3856b453858e61a05}\label{classGraph_a9b23a1ce91eceed3856b453858e61a05}} 
+\index{Graph@{Graph}!no\+\_\+of\+\_\+vertices@{no\+\_\+of\+\_\+vertices}}
+\index{no\+\_\+of\+\_\+vertices@{no\+\_\+of\+\_\+vertices}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{no\+\_\+of\+\_\+vertices}{no\_of\_vertices}}
+{\footnotesize\ttfamily ll Graph\+::no\+\_\+of\+\_\+vertices}
+
+Number of vertices present in graph 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+dcsc.\+cpp\end{DoxyCompactItemize}

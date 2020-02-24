@@ -6,8 +6,19 @@ using namespace std;
 ll medge = 0;
 ll mnodes = 1;
 
+//! Contains set-related operations
+/*! 
+	Used for set operations like union, intersection, and difference. 
+*/
 class Set {
 public:
+
+	//! Finds the intersection of two given sets represented as vectors
+	/*!
+		\param a vector argument representing set 1
+		\param b vector argument representing set 2
+		\result Intersection of vectors a and b
+	*/
 	static vector<ll> get_intersection(vector<ll> a, vector<ll> b) {
 		ll result_size = a.size() + b.size();
 		vector<ll> result(result_size, -1);
@@ -16,6 +27,13 @@ public:
 		return clear_output(result);
 	}
 
+	//! Finds the union of the two given sets represented as vectors
+	/*!
+		\param a vector argument representing set 1
+		\param b vector argument representing set 2
+		\result Union of vectors a and b
+	*/
+
 	static vector<ll> get_union(vector<ll> a, vector<ll> b) {
 		ll result_size = a.size() + b.size();
 		vector<ll> result(result_size, -1);
@@ -23,6 +41,13 @@ public:
 		it = set_union(a.begin(), a.end(), b.begin(), b.end(), result.begin());
 		return clear_output(result);
 	}
+
+	//! Finds the difference between two given sets represented as vectors
+	/*!
+		\param a vector argument representing set 1
+		\param b vector argument representing set 2
+		\result Difference between vectors a and b
+	*/
 
 	static vector<ll> get_subtract(vector<ll> a, vector<ll> b) {
 		ll result_size = a.size() + b.size();
@@ -42,13 +67,28 @@ private:
 	}
 };
 
+//! Contains operations related to Graphs
+/*!
+	Consists of class functions and helper methods for implementing DCSC algorithm
+*/
+
 class Graph {
 public:
+
+	/*! Number of vertices present in graph */
 	ll no_of_vertices;
+	/*! Number of edges present in graph */
 	ll no_of_edges;
+	/*! Graph stored in form of adjacency list */
 	vector<vector<ll>> graph;
+	/*! Graph stored in an inverted fashion */
 	vector<vector<ll>> graph_inverted;
 
+	//! Constructor for initializing the graphs
+	/*!
+		\param no_vertices The total number of vertices present in the graph
+		\param no_edged The total number of edges present in the graph
+	*/
 	Graph(ll no_vertices, ll no_edges) {
 		// cout << "graph built using constructor.\n";
 		no_of_vertices = no_vertices;
@@ -61,12 +101,21 @@ public:
 		// cout << "graph size: " << graph.size() << endl;
 	}
 
+	//! Member function for inserting edges between two vertices into the graph
+	/*! 
+		\param from Vertex 1
+		\param to Vertex 2 
+	*/
 	void insert_edge(ll from, ll to) {
 		// cout << "inserting edge: " << from << " to " << to << endl; 
 		graph[from].pb(to);
 		graph_inverted[to].pb(from);
 	}
 
+	//! Member function to print vertices present in the graph
+	/*! 
+		\param vertex_set A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise
+	*/
 	void print_vertices(vector<ll> vertex_set) {
 		for (ll i = 0; i < vertex_set.size(); i++) {
 			if (vertex_set[i] == 1)
@@ -75,12 +124,24 @@ public:
 		cout << endl;
 	}
 
+	//! Member function to find a random vertex in the graph
+	/*!
+		\param vertex_set A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise
+		\return Random vertex v
+	*/
+
 	ll random_vertex(vector<ll> vertex_set) {
 		for (ll i = 0; i < vertex_set.size(); i++)
 			if (vertex_set[i] == 1)
 				return i;
 		return -1;
 	}
+
+	//! Member function which returns total number of edges present in graph
+	/*!
+		\param vertex_set A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise
+		\return Number of edges
+	*/ 
 
 	ll edge_count(vector<ll> vertex_set) {
 
@@ -91,6 +152,13 @@ public:
 					edge_c++;
 		return edge_c;
 	}
+
+	//! Member function to find predecessor vertices of a vertex v in a Graph
+	/*!
+		\param vertex_set A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise
+		\param v Vertex v whose predecessors have to be calculated
+		\return Vector consisting of vertices which are predecessors of vertex v
+	*/
 
 	vector<ll> pred(vector<ll> vertex_set, ll v) {
 		vector<ll> result(no_of_vertices, 0);
@@ -105,6 +173,13 @@ public:
 		return result_set;
 	}
 
+	//! Member function to find descendant vertices of a vertex v in a Graph
+	/*!
+		\param vertex_set A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise
+		\param v Vertex v whose descendants have to be calculated
+		\return Vector consisting of vertices which are descendants of vertex v
+	*/
+
 	vector<ll> desc(vector<ll> vertex_set, ll v) {
 		vector<ll> result(no_of_vertices, 0);
 		vector<ll> vis(no_of_vertices, 0);
@@ -117,6 +192,12 @@ public:
 				result_set.pb(i);
 		return result_set;
 	}
+
+	//! Member function which returns vertices corresponding to a given vertex_set
+	/*!
+		\param vertex_set A vector representing vertices in terms of 1 and 0, 1 if the vertex is present in graph and 0 otherwise
+		\return Set of vertices represented by the vertex_set
+	*/
 
 	vector<ll> get_vector_set(vector<ll> vertex_set) {
 		std::vector<ll> ans;
