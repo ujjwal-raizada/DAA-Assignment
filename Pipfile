@@ -8,6 +8,9 @@ verify_ssl = true
 [packages]
 pygraphviz = "*"
 pytest = "*"
+networkx = "*"
+matplotlib = "*"
+scipy = "*"
 
 [requires]
 python_version = "3.7"
