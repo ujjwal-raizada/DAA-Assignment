@@ -127,18 +127,30 @@ void Graph::SCCs() // A function that finds and prints all strongly connected co
 
 int main()// Main 
 { 
+    //Using text files for input output
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+
     int vertices, edges;
-    cin>>vertices>>edges; //take no. of vertices and edges as input
+    cin >> vertices >> edges; //take no. of vertices and edges as input
     Graph g(vertices); //Initialize the constructor for the graph
-    for(int i=0;i<edges;i++)
+    for(int i = 0; i < edges; i++)
     {
-        int a,b; 
-        cin>>a>>b; // take the directed edge a->b as input
-        g.Edge(a,b);  
+        int a, b; 
+        cin >> a >> b; // take the directed edge a->b as input
+        g.Edge(a, b);  
     }
   
     cout << "The Following are strongly connected components in given graph \n"; 
+    
+    auto start = std::chrono::steady_clock::now();
     g.SCCs(); 
+    auto end = std::chrono::steady_clock::now();
+    auto diff = end - start;
+    cout << "Execution Time: " << std::chrono::duration <double, milli> (diff).count() << "ms" << endl;
+    
   
     return 0; 
 }

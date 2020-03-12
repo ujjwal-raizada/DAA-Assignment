@@ -5,6 +5,7 @@
 using namespace std;
 ll medge = 0;
 ll mnodes = 1;
+ll scc_counter = 0;
 
 //! Contains set-related operations
 /*! 
@@ -259,8 +260,10 @@ void dcsc(Graph graph, vector<ll> vertex_vector) {
 		
 		// cout << "Ans: ";
 		for (ll i = 0; i < vertex_set.size(); i++)
-			if (vertex_set[i] == 1)
+			if (vertex_set[i] == 1) {
+				scc_counter++;
 				cout << i << endl;
+			}
 	}
 	else {
 		ll v = graph.random_vertex(vertex_set);
@@ -275,6 +278,7 @@ void dcsc(Graph graph, vector<ll> vertex_vector) {
 
 		vector<ll> scc = Set::get_intersection(graph.pred(vertex_set, v), graph.desc(vertex_set, v));
 		// cout << "Ans: ";
+		scc_counter++;
 		print_vector(scc);
 
 		std::vector<ll> temp_vertex_set(graph.no_of_vertices, 0);
@@ -296,7 +300,7 @@ int main() {
     //Using text files for input output
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
+    freopen("output.txt", "w", stdout);
     #endif
 
     ll n, m;
@@ -312,12 +316,15 @@ int main() {
     	graph.insert_edge(a, b);
     }
 
+    cout << "Each line corresponds to a strongly connected set:\n";
+
 	auto start = std::chrono::steady_clock::now();
     dcsc(graph, vertex_set);
 	auto end = std::chrono::steady_clock::now();
 	auto diff = end - start;
-    cout << "medge: " << medge << endl;
-    cout << "mnodes: " << mnodes << endl;
+    cout << "Edges in largest SCC: " << medge << endl;
+    cout << "Nodes in largest SCC: " << mnodes << endl;
+    cout << "Number of SCC: " << scc_counter << endl;
 	cout << "Execution Time: " << std::chrono::duration <double, milli> (diff).count() << "ms" << endl;
     return 0;
 }
