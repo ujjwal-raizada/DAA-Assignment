@@ -239,6 +239,11 @@ void print_vector(std::vector<ll> v) {
 	cout << endl;
 }
 
+//! Function to run dcsc algorithm on a graph
+/*!
+	\param graph Graph on which the algorithm has to be applied
+	\param vertex_vector A vector representing the vertices of the graph
+*/
 void dcsc(Graph graph, vector<ll> vertex_vector) {
 
 	std::vector<ll> vertex_set(graph.no_of_vertices, 0);
@@ -291,7 +296,7 @@ int main() {
     //Using text files for input output
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    // freopen("output.txt", "w", stdout);
     #endif
 
     ll n, m;
@@ -307,8 +312,12 @@ int main() {
     	graph.insert_edge(a, b);
     }
 
+	auto start = std::chrono::steady_clock::now();
     dcsc(graph, vertex_set);
-    // cout << "medge: " << medge << endl;
-    // cout << "mnodes: " << mnodes << endl;
+	auto end = std::chrono::steady_clock::now();
+	auto diff = end - start;
+    cout << "medge: " << medge << endl;
+    cout << "mnodes: " << mnodes << endl;
+	cout << "Execution Time: " << std::chrono::duration <double, milli> (diff).count() << "ms" << endl;
     return 0;
 }
