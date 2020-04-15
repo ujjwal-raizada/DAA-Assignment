@@ -11,7 +11,7 @@ private:
 
     vector<vector<int>> graph;
     vector<vector<int>> res_graph;
-    vector<int> path;
+    vector<int> path, indegree;
     int max_flow = 0;
     int s, t, no_of_vertex;
     int delta = 1 << 20;
@@ -49,14 +49,16 @@ private:
 public:
 
     Graph(int n) {
-        graph.resize(n, vector<int>(n, 0));
-        res_graph.resize(n, vector<int>(n, 0));
+        graph.resize(n + 2, vector<int>(n + 2, 0));
+        res_graph.resize(n + 2, vector<int>(n + 2, 0));
         no_of_vertex = n;
-        path.resize(n, -1);
+        path.resize(n + 2, -1);
+        indegree.resize(n + 2, 0);
     }
 
     void add_edge(int a, int b, int capacity) {
         graph[a][b] = capacity;
+        indegree[b]++;
     }
 
     void build_residual_graph() {
@@ -122,6 +124,35 @@ public:
         return edges;
     }
 
+    vector<pair<int, int>> max_bipartite_matching() {
+        // no_of_vertex, no_of_vertex + 1
+
+        int start = no_of_vertex;
+        int end = no_of_vertex + 1;
+
+        for (int i = 0; i < no_of_vertex; i++) {
+            if (indegree[i] == 0)
+                graph[start][i] = 1;
+            else
+                graph[i][end] = 1;
+        }
+
+        no_of_vertex += 2;
+
+        build_residual_graph();
+        cout << "max flow: " << ford_fulkerson(start, end) << endl;
+
+        vector<pair<int, int>> edges;
+        for (int i = 0; i < no_of_vertex - 2; i++)
+            for (int j = 0; j < no_of_vertex - 2; j++)
+                if (res_graph[j][i] > 0 and graph[i][j] > 0)
+                    edges.push_back(make_pair(i, j));
+
+        return edges;
+
+
+    }
+
 };
 
 int main() {
@@ -142,11 +173,15 @@ int main() {
         cin >> a >> b >> cap;
         graph.add_edge(a, b, cap);
     }
-    graph.build_residual_graph();
-    cout << "max flow: " << graph.ford_fulkerson(0, 5) << endl;
-    
-    auto st_cut_edges = graph.find_st_cut();
-    for (auto edge: st_cut_edges)
+    // graph.build_residual_graph();
+    // cout << "max flow: " << graph.ford_fulkerson(0, 5) << endl;
+
+    // auto st_cut_edges = graph.find_st_cut();
+    // for (auto edge: st_cut_edges)
+    //     cout << edge.first << " " << edge.second << endl;
+
+    auto mbpm_edges = graph.max_bipartite_matching();
+    for (auto edge: mbpm_edges)
         cout << edge.first << " " << edge.second << endl;
 
 
