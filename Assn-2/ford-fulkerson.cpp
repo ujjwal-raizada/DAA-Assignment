@@ -3,8 +3,6 @@
 #define ll long long
 #define pb push_back
 
-#define MOD 1000000007
-
 using namespace std;
 
 class Graph {
@@ -61,7 +59,7 @@ public:
         graph[a][b] = capacity;
     }
 
-    void generate_residual_graph() {
+    void build_residual_graph() {
         for (int i = 0; i < no_of_vertex; i++)
             for (int j = 0; j < no_of_vertex; j++)
                 res_graph[i][j] = graph[i][j];
@@ -96,6 +94,34 @@ public:
         return max_flow;
     }
 
+    vector<pair<int, int>> find_st_cut() {
+        vector<int> s_set(no_of_vertex, 0);
+
+        queue<int> q;
+        q.push(s);
+        s_set[s] = 1;
+
+        while(!q.empty()) {
+            int u = q.front();
+            q.pop();
+
+            for (int i = 0; i < no_of_vertex; i++) {
+                if (s_set[i] == 0 and res_graph[u][i] > 0) {
+                    s_set[i] = 1;
+                    q.push(i);
+                }
+            }
+        }
+
+        vector<pair<int, int>> edges;
+        for (int i = 0; i < no_of_vertex; i++)
+            for (int j = 0; j < no_of_vertex; j++)
+                if (s_set[i] == 1 and s_set[j] == 0 and graph[i][j] > 0)
+                    edges.push_back(make_pair(i, j));
+
+        return edges;
+    }
+
 };
 
 int main() {
@@ -116,8 +142,12 @@ int main() {
         cin >> a >> b >> cap;
         graph.add_edge(a, b, cap);
     }
-    graph.generate_residual_graph();
-    cout << graph.ford_fulkerson(0, 5);
+    graph.build_residual_graph();
+    cout << "max flow: " << graph.ford_fulkerson(0, 5) << endl;
+    
+    auto st_cut_edges = graph.find_st_cut();
+    for (auto edge: st_cut_edges)
+        cout << edge.first << " " << edge.second << endl;
 
 
     return 0;
