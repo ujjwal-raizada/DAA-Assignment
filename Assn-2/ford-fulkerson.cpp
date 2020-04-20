@@ -71,6 +71,7 @@ public:
     int ford_fulkerson(int start, int end) {
         s = start;
         t = end;
+        delta = 1 << 20;
 
         while (breadth_first_search() == true or delta > 0) {
             if (breadth_first_search() == false) {
