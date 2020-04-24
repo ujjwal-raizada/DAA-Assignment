@@ -1,4 +1,4 @@
-Strongly Connected Components using Divide and Conquer 
+Strongly Connected Components using Divide and Conquer
 ======================================================
 
 ### Installation:
@@ -15,3 +15,4 @@ The library used for visualising graphs is - [Graphviz](https://pygraphviz.githu
 ### Author:
 * [Ujjwal Raizada](https://github.com/ujjwal-raizada)
 * [Pranjal Gupta](https://github.com/PranjalGupta2199)
+* [Daksh Yashlaha](https://github.com/daksh-yashlaha)
