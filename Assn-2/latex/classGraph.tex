@@ -1,0 +1,119 @@
+\hypertarget{classGraph}{}\section{Graph Class Reference}
+\label{classGraph}\index{Graph@{Graph}}
+
+
+Contains graph-\/related operations.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGraph_a7b14c9bc0b5fbf50165aaf92f4aeef1d}{Graph} (int n)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGraph}{Graph} constructor for initializing the graph. \end{DoxyCompactList}\item 
+void \hyperlink{classGraph_a232e50e0a5670ca9bc18127852996cd9}{add\+\_\+edge} (int a, int b, int capacity)
+\begin{DoxyCompactList}\small\item\em Member function for adding edge to the graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGraph_af06b54d5e69ddb1dc06c148b3e8b2652}\label{classGraph_af06b54d5e69ddb1dc06c148b3e8b2652}} 
+void \hyperlink{classGraph_af06b54d5e69ddb1dc06c148b3e8b2652}{build\+\_\+residual\+\_\+graph} ()
+\begin{DoxyCompactList}\small\item\em Member function to build residual graph from a given graph. \end{DoxyCompactList}\item 
+int \hyperlink{classGraph_a3fc6093d0baeeb26e90b8301e7c72a80}{ford\+\_\+fulkerson} (int start, int end)
+\begin{DoxyCompactList}\small\item\em Member function to implement ford-\/fulkerson algorithm. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ int, int $>$ $>$ \hyperlink{classGraph_adaa9dad475e9717745135cc26102f7d5}{find\+\_\+st\+\_\+cut} ()
+\begin{DoxyCompactList}\small\item\em Member function to find the minimum st-\/cut of a flow graph. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ int, int $>$ $>$ \hyperlink{classGraph_a88a8eca3d603c4b20b848f20e70a9b36}{max\+\_\+bipartite\+\_\+matching} ()
+\begin{DoxyCompactList}\small\item\em Member function for solving max bipartite matching problem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains graph-\/related operations. 
+
+Consists of class functions and helper methods for implementing Ford Fulkerson Algorithm 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGraph_a7b14c9bc0b5fbf50165aaf92f4aeef1d}\label{classGraph_a7b14c9bc0b5fbf50165aaf92f4aeef1d}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\hyperlink{classGraph}{Graph} constructor for initializing the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & the number of vertices present in the graph \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classGraph_a232e50e0a5670ca9bc18127852996cd9}\label{classGraph_a232e50e0a5670ca9bc18127852996cd9}} 
+\index{Graph@{Graph}!add\+\_\+edge@{add\+\_\+edge}}
+\index{add\+\_\+edge@{add\+\_\+edge}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{add\+\_\+edge()}{add\_edge()}}
+{\footnotesize\ttfamily void Graph\+::add\+\_\+edge (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{capacity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function for adding edge to the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & node 1 \\
+\hline
+{\em b} & node 2 \\
+\hline
+{\em capacity} & the edge weight between node a and b \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_adaa9dad475e9717745135cc26102f7d5}\label{classGraph_adaa9dad475e9717745135cc26102f7d5}} 
+\index{Graph@{Graph}!find\+\_\+st\+\_\+cut@{find\+\_\+st\+\_\+cut}}
+\index{find\+\_\+st\+\_\+cut@{find\+\_\+st\+\_\+cut}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{find\+\_\+st\+\_\+cut()}{find\_st\_cut()}}
+{\footnotesize\ttfamily vector$<$pair$<$int, int$>$ $>$ Graph\+::find\+\_\+st\+\_\+cut (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function to find the minimum st-\/cut of a flow graph. 
+
+\begin{DoxyReturn}{Returns}
+Edges corresponding to the minimum st-\/cut of the given network flow graph 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a3fc6093d0baeeb26e90b8301e7c72a80}\label{classGraph_a3fc6093d0baeeb26e90b8301e7c72a80}} 
+\index{Graph@{Graph}!ford\+\_\+fulkerson@{ford\+\_\+fulkerson}}
+\index{ford\+\_\+fulkerson@{ford\+\_\+fulkerson}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{ford\+\_\+fulkerson()}{ford\_fulkerson()}}
+{\footnotesize\ttfamily int Graph\+::ford\+\_\+fulkerson (\begin{DoxyParamCaption}\item[{int}]{start,  }\item[{int}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function to implement ford-\/fulkerson algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The starting node \\
+\hline
+{\em end} & The end node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting max flow between the nodes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a88a8eca3d603c4b20b848f20e70a9b36}\label{classGraph_a88a8eca3d603c4b20b848f20e70a9b36}} 
+\index{Graph@{Graph}!max\+\_\+bipartite\+\_\+matching@{max\+\_\+bipartite\+\_\+matching}}
+\index{max\+\_\+bipartite\+\_\+matching@{max\+\_\+bipartite\+\_\+matching}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{max\+\_\+bipartite\+\_\+matching()}{max\_bipartite\_matching()}}
+{\footnotesize\ttfamily vector$<$pair$<$int, int$>$ $>$ Graph\+::max\+\_\+bipartite\+\_\+matching (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function for solving max bipartite matching problem. 
+
+\begin{DoxyReturn}{Returns}
+Edges corresponding to the bipartite matching 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ford-\/fulkerson.\+cpp\end{DoxyCompactItemize}

@@ -5,17 +5,30 @@
 
 using namespace std;
 
+//! Contains graph-related operations
+/*!
+    Consists of class functions and helper methods for implementing Ford Fulkerson Algorithm
+*/
+
 class Graph {
 
 private:
 
+    /*! Graph stored in form of adjacency list*/
     vector<vector<int>> graph;
+    /*! Residual graph stored in form of adjacency list*/
     vector<vector<int>> res_graph;
+    /*! Array for storing the path and indegree of nodes*/
     vector<int> path, indegree;
+    /*! Initializing max_flow to 0 */
     int max_flow = 0;
     int s, t, no_of_vertex;
     int delta = 1 << 20;
 
+    //! Utility function which uses BFS to check node t is reachable from source s*/
+    /*!
+        \return True if the node t is reachable from source s, else False
+    */
     bool breadth_first_search() {
 
         vector<int> visited(no_of_vertex, 0);
@@ -48,6 +61,10 @@ private:
 
 public:
 
+    //! Graph constructor for initializing the graph
+    /*!
+        \param n the number of vertices present in the graph
+    */
     Graph(int n) {
         graph.resize(n + 2, vector<int>(n + 2, 0));
         res_graph.resize(n + 2, vector<int>(n + 2, 0));
@@ -56,11 +73,18 @@ public:
         indegree.resize(n + 2, 0);
     }
 
+    //! Member function for adding edge to the graph
+    /*!
+        \param a node 1
+        \param b node 2
+        \param capacity the edge weight between node a and b
+    */
     void add_edge(int a, int b, int capacity) {
         graph[a][b] = capacity;
         indegree[b]++;
     }
 
+    //! Member function to build residual graph from a given graph
     void build_residual_graph() {
         for (int i = 0; i < no_of_vertex; i++)
             for (int j = 0; j < no_of_vertex; j++)
@@ -68,6 +92,12 @@ public:
 
     }
 
+    //! Member function to implement ford-fulkerson algorithm
+    /*!
+        \param start The starting node
+        \param end The end node
+        \return The resulting max flow between the nodes
+    */
     int ford_fulkerson(int start, int end) {
         s = start;
         t = end;
@@ -97,6 +127,10 @@ public:
         return max_flow;
     }
 
+    //! Member function to find the minimum st-cut of a flow graph
+    /*!
+        \return Edges corresponding to the minimum st-cut of the given network flow graph
+    */
     vector<pair<int, int>> find_st_cut() {
         vector<int> s_set(no_of_vertex, 0);
 
@@ -125,6 +159,10 @@ public:
         return edges;
     }
 
+    //! Member function for solving max bipartite matching problem
+    /*!
+        \return Edges corresponding to the bipartite matching
+    */
     vector<pair<int, int>> max_bipartite_matching() {
         // no_of_vertex, no_of_vertex + 1
 
