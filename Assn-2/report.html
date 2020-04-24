@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DAA Assignment-2 Report</title>
+  </head>
+  <body>
+    <p><b><centre> General Discussion of Ford Fulkerson Algorithm </centre></b></p>
+    <p>The Ford-Fulkerson Algorithm was published in 1956 in the Canadian Journal of Mathematics in the paper titled
+       'Maximal Flow Through A Network' authored by L. R. Ford Jr. and D. R. Fulkerson. Idea behind the algorithm : 
+       We can send flow along one of the paths provided that the path starts from the source and extends to the sink 
+       with capacity available on all edges in the path</p>
+
+    <p><u>Max Flow Min Cut Theorem</u></p>
+    <p>As per the max-flow min-cut theorem, in a flow network ' the maximum amount of flow passing from the source to the
+       sink is equal to the total weight of the edges in the minimum cut'. The minimum cut is the smallest total weight of
+        the edges which if removed would disconnect the source from the sink.</p>
+
+    <p><u>Key Terms</u></p>
+    <p><ul>
+      <li>Capacity condition 0&#60;f(e)&#60;c(e)</li>
+      <li>Conservation condition Σe_into_vf(e)=Σe_outof_vf(e)</li>
+      <li>Augmenting path:-is a simple s to t path on the residual graph</li>
+      <li>Bottleneck capacity:-is the minimum residual capacity on an augmenting path</li>
+    </ul></p>
+    
+    <p><u>Key Observations</u></p>
+    <p><ul>
+      <li>At every intermediate stage of Ford-Fulkerson algorithm, the flow values {f(e)} and the residual capacities
+         in Gf are integers</li>
+      <li>The Ford-Fulkerson algorithm terminates in at most C iterations of the while loop and thus the total time taken
+         is O(mC) where C is the max flow value</li>
+      <li>If e, e' are anti-parallel edges(i.e. one is forward edge and one is backward edge) in a flow network, there
+         exists a max-flow in which atleast one of e , e' has no flow through it</li>
+    </ul></p>
+
+    <p><u>Max Flow Min Cut Problem has several Applications such as:</u></p>
+    <p><ul>
+      <li>Menger's theorem:-Given an undirected graph G = (V, E) and two vertices t and s,the problem is to find the maximum
+         number of edge-disjoint s-t paths in G</li>
+      <li>Project selection problem:- Given n projects and m machines, revenue r(pi) for each project pi and costs c(qj) for
+         each machine qj , select projects and machines to purchase such that it results in maximum profit. Every project requires
+          a certain number of machines and each machine could be shared by several projects</li>
+      <li>Image segmentation problem:- Given n pixels, each of which can be assigned a foreground value fi or a background value bi.
+         A penalty of pij is awarded if pixels i, j are adjacent and have different assignments. The problem is to assign pixels to
+          foreground or background such that the sum of their values minus the penalties is maximum</li>
+      <li>Maximum Bipartite Matching:- A matching in a Bipartite Graph is a set of the edges selected such that no two edges share
+         an endpoint. A maximum matching is a matching with maximum number of edges</li>
+    </ul></p>
+
+    <p><u>Issues in Coding</u></p>
+    <p><ul>
+      <li>There was not a specific format for the datasets, thus we had modify our code and the file accordingly to ascertain 
+        a specific format</li>
+    </ul></p>
+  </body>
+</html>
