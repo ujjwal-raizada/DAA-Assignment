@@ -228,7 +228,7 @@ void task3(){
 
     Graph graph(n + m);
 
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < e; i++) {
         int a, b;
         cin >> a >> b;
         graph.add_edge(a - 1, n + b - 1, 1);
@@ -239,20 +239,20 @@ void task3(){
     for (auto edge: mbpm_edges)
         cout << edge.first << " " << edge.second << endl;
 
-    task2(graph);
+    // task2(graph);
 }
 
 int main() {
 
     //Using text files for input output
     #ifndef ONLINE_JUDGE
-    freopen("./test/input/task3b.txt", "r", stdin);
-    freopen("./test/output/task3b.txt", "w", stdout);
+    freopen("./test/input/task1b.txt", "r", stdin);
+    freopen("./test/output/task1b.txt", "w", stdout);
     #endif
 
 	auto start = std::chrono::steady_clock::now();
-    // task1();
-    task3();
+    task1();
+    // task3();
 	auto end = std::chrono::steady_clock::now();
 	auto diff = end - start;
     cout << "Execution Time: " << std::chrono::duration <double, milli> (diff).count() << "ms" << endl;
