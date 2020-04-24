@@ -122,7 +122,7 @@ public:
                 res_graph[v][u] += flow;
             }
             max_flow += flow;
-            
+
         }
         return max_flow;
     }
@@ -194,16 +194,19 @@ public:
 
 };
 
-int main() {
+void task2(Graph graph){
+    auto st_cut_edges = graph.find_st_cut();
+    for (auto edge: st_cut_edges)
+        cout << edge.first << " " << edge.second << endl;
 
-    //Using text files for input output
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
+}
 
+void task1(){
     int n, m;
     cin >> n >> m;
+
+    int start, end;
+    cin >> start >> end;
 
     Graph graph(n);
 
@@ -212,17 +215,46 @@ int main() {
         cin >> a >> b >> cap;
         graph.add_edge(a, b, cap);
     }
-    // graph.build_residual_graph();
-    // cout << "max flow: " << graph.ford_fulkerson(0, 5) << endl;
 
-    // auto st_cut_edges = graph.find_st_cut();
-    // for (auto edge: st_cut_edges)
-    //     cout << edge.first << " " << edge.second << endl;
+    graph.build_residual_graph();
+    cout << "max flow: " << graph.ford_fulkerson(start, end) << endl;
+
+    task2(graph);
+}
+
+void task3(){
+    int e, n, m;
+    cin >> e >> n >> m;
+
+    Graph graph(n + m);
+
+    for (int i = 0; i < m; i++) {
+        int a, b;
+        cin >> a >> b;
+        graph.add_edge(a - 1, n + b - 1, 1);
+        // graph.add_edge(n + b - 1, a - 1, 1);
+    }
 
     auto mbpm_edges = graph.max_bipartite_matching();
     for (auto edge: mbpm_edges)
         cout << edge.first << " " << edge.second << endl;
 
+    task2(graph);
+}
 
+int main() {
+
+    //Using text files for input output
+    #ifndef ONLINE_JUDGE
+    freopen("./test/input/task3b.txt", "r", stdin);
+    freopen("./test/output/task3b.txt", "w", stdout);
+    #endif
+
+	auto start = std::chrono::steady_clock::now();
+    // task1();
+    task3();
+	auto end = std::chrono::steady_clock::now();
+	auto diff = end - start;
+    cout << "Execution Time: " << std::chrono::duration <double, milli> (diff).count() << "ms" << endl;
     return 0;
 }
