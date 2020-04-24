@@ -239,20 +239,20 @@ void task3(){
     for (auto edge: mbpm_edges)
         cout << edge.first << " " << edge.second << endl;
 
-    // task2(graph);
+    task2(graph);
 }
 
 int main() {
 
     //Using text files for input output
     #ifndef ONLINE_JUDGE
-    freopen("./test/input/task1b.txt", "r", stdin);
-    freopen("./test/output/task1b.txt", "w", stdout);
+    freopen("./test/input/task3c.txt", "r", stdin);
+    freopen("./test/output/task3c.txt", "w", stdout);
     #endif
 
 	auto start = std::chrono::steady_clock::now();
-    task1();
-    // task3();
+    // task1();
+    task3();
 	auto end = std::chrono::steady_clock::now();
 	auto diff = end - start;
     cout << "Execution Time: " << std::chrono::duration <double, milli> (diff).count() << "ms" << endl;
